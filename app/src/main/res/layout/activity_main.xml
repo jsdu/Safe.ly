@@ -1,7 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:background="@drawable/cloud"
+	android:background="#ff2feaff"
 	android:fillViewport="false"
 	android:id="@+id/Scroll"
     android:clickable="false"

@@ -117,8 +117,8 @@ public class MainActivity extends Activity implements OnClickListener {
     boolean thresholdSet = true;
     int timeSlept = 0;
     int timeAwake = 0;
-    int numSoFar = 2;
-    int initCounter = 200;
+    int numSoFar = 1;
+    int initCounter = 300;
     int initRefresh = 0;
     int initRefresh2 = 0;
     int initRefresh3 = 0;
@@ -259,7 +259,7 @@ public class MainActivity extends Activity implements OnClickListener {
                                     (acc_z_init > data.get(Accelerometer.LEFT_RIGHT.ordinal()) + 400))) {
                                 notice();
                             }
-                            initRefresh = 20;
+                            initRefresh = 50;
                         }
                         initRefresh --;
                     }
@@ -296,42 +296,40 @@ public class MainActivity extends Activity implements OnClickListener {
 
                         if (initCounter > 0) {
                             avgBETAInit1 = (data.get(Eeg.FP1.ordinal()) +
-                                    avgBETASoFar1 * (numSoFar - 2)) / numSoFar;
+                                    avgBETAInit1 * (numSoFar - 1)) / numSoFar;
                             avgBETAInit2 = (data.get(Eeg.FP2.ordinal()) +
-                                    avgBETASoFar2 * (numSoFar - 2)) / numSoFar;
-                            numSoFar += 2;
+                                    avgBETAInit2 * (numSoFar - 1)) / numSoFar;
+                            numSoFar += 1;
                             flag.setText("Not Ready");
                             initCounter--;
 
                         } else {
                             flag.setText("Ready");
                             if (thresholdSet == true){
-                                avgBetaThreshold1 = avgBETAInit1 * 0.7;
-                                avgBetaThreshold2 = avgBETAInit2 * 0.7;
+                                avgBetaThreshold1 = avgBETAInit1 - 0.6;
+                                avgBetaThreshold2 = avgBETAInit2 - 0.6;
                                 thresholdSet = false;
                             }
                             if (initRefresh2 == 0) {
-                                if ((((data.get(Eeg.FP1.ordinal())) < avgBetaThreshold1)
-                                        || (data.get(Eeg.FP2.ordinal()) < avgBetaThreshold2))
-                                        && (initRefresh3 == 0)) {
-                                    notice();
-                                    timeSlept ++;
-                                    if (timeSlept < 10) {
-                                        initRefresh3 = 50;
+                                if (((data.get(Eeg.FP1.ordinal())) < avgBetaThreshold1)
+                                        || (data.get(Eeg.FP2.ordinal()) < avgBetaThreshold2)) {
+                                    timeSlept++;
+
+                                    if (initRefresh3 == 0) {
+                                        notice();
+                                        if (timeSlept < 5) {
+                                            initRefresh3 = 10;
+                                        } else if (timeSlept < 20) {
+                                            initRefresh3 = 5;
+                                        } else if (timeSlept >= 20) {
+                                            initRefresh3 = 1;
+                                        }
                                     }
-                                    else if (timeSlept < 25) {
-                                        initRefresh3 = 25;
-                                    }
-                                    else if (timeSlept > 50){
-                                        initRefresh3 = 1;
-                                    }
-                                }
-                                else {
-                                    timeAwake ++;
-                                    if (timeAwake > 20){
+                                } else {
+                                    timeAwake++;
+                                    if (timeAwake > 20) {
                                         timeSlept = 0;
                                     }
-
                                 }
                                 if (initRefresh3 > 0) {
                                     initRefresh3--;
@@ -497,8 +495,8 @@ public class MainActivity extends Activity implements OnClickListener {
             onClickInit = true;
             initClicked = true;
             initFirstClicked = true;
-            numSoFar = 2;
-            initCounter = 200;
+            numSoFar = 1;
+            initCounter = 300;
 //            // create and display a new ProgressBarDialog
 ////            progressBar = new ProgressDialog(v.getContext());
 //            progressBar.setMessage("Initializing ...");

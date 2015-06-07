@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/JasonDu/Documents/Safe.ly-master/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/JasonDu/Documents/Safe.ly/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/Users/JasonDu/Documents/Safe.ly-master/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/JasonDu/Documents/Safe.ly/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="accel">Accelerometer Data:</string>
     <string name="action_settings">Safe.ly</string>
@@ -23,7 +23,7 @@
     <string name="status">Connection Status:</string>
     <string name="undefined">unknown</string>
     <string name="version">Version:</string>
-    <!-- From: file:/Users/JasonDu/Documents/Safe.ly-master/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/JasonDu/Documents/Safe.ly/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Holo.NoActionBar">
         <!--
